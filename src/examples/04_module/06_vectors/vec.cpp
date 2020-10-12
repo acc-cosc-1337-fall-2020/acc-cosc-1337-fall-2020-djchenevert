@@ -1,8 +1,63 @@
 #include "for_ranged.h"
 #include<iostream>
 #include<vector>
+#include "vec.h"
 
 using std::vector;
+
+
+
+
+void loop_string_w_index(std::string str)
+{
+    for(std::size_t i = 0; i< str.size(); ++i )
+    {
+        str[i] = 'z';
+    }
+}
+
+void loop_string_w_index_ref(std::string& str)
+{
+    for(std::size_t i = 0; i< str.size(); ++i )
+    {
+        str[i] = 'z';
+    }
+}
+
+void loop_string_w_index_for_ranged(std::string& str)
+{
+    for(auto c: str)
+    {
+        c = 'z';
+    }
+}
+
+void loop_string_w_index_for_ranged_ref(std::string& str){
+    for(auto& c: str)
+    {
+        c = 'z';
+    }
+}
+
+
+void loop_vector_w_index(std::vector<int> nums)
+{
+    for (std::size_t i=0; i < nums.size(); ++i)
+    {
+        nums[i] = 0;
+    }
+}
+void loop_vector_w_index_ref(std::vector<int>& nums)
+{
+    for (std::size_t i=0; i < nums.size(); ++i)
+    {
+        nums[i] = 0;
+    }
+}
+
+
+
+
 
 /*
 Function loop_vector_w_index 
