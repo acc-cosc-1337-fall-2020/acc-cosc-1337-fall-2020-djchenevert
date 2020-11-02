@@ -17,6 +17,6 @@ class TicTacToe
         bool check_board_full();
         void clear_board();
         string player;
-        vector<string> pegs{9, " "};
+        vector<string> pegs{9," "};
 
 };

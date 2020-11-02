@@ -13,9 +13,10 @@ int main()
 		cout<<"Enter X or O: ";
 		string value;
 		cin>>value;
+
+		start.start_game(value);
 		while(start.game_over() != true)
 		{
-			start.start_game(value);
 			int position;
 			cout<<"Enter a position from 1 to 9: ";
 			cin>>position;

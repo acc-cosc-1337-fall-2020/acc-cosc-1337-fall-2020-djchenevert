@@ -32,19 +32,17 @@ void TicTacToe::display_board() const
         }
        
     }
-    cout<<"\nEND";
+    cout<<"\n";
 }
 //Private
 void TicTacToe::set_next_player()
 {
     if(player == "X" || player == "x")
     {
-        cout<<("penguins\n");
         player = "O";
     }
     else
     {
-        cout<<"giraffe\n";
         player = "X";
     }
     cout<<"player == "<<player<<"\n";
@@ -54,10 +52,12 @@ bool TicTacToe::check_board_full()
     for(int i = 0; i < pegs.size(); i++)
     {
         if(pegs[i] == " ")
+
         {
             return false;
         }
     }
+
     return true;
 }
 void TicTacToe::clear_board()
