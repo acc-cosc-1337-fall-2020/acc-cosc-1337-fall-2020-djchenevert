@@ -4,7 +4,18 @@ using std::cout;    using std::cin;
 
 bool TicTacToe::game_over()
 {
-    return check_board_full();
+    if(check_column_win() == true || check_row_win() == true || check_diagonal_win() == true)
+    {
+        set_winner();
+        return true;
+    }
+    else if(check_board_full() == true)
+    {
+        winner = "C";
+        return true;
+    }
+    return false;
+
 }
 void TicTacToe::start_game(string first_player)
 {
@@ -30,14 +41,75 @@ void TicTacToe::display_board() const
        } else{
             cout <<pegs[i]<<"|";
         }
-       
     }
     cout<<"\n";
 }
+string TicTacToe::get_winner()
+{
+    return winner;
+}
+
 //Private
+
+bool TicTacToe::check_column_win()
+{
+    if(pegs[0] == pegs[3] && pegs[3] == pegs[6] && pegs[0] != " ")
+    {
+        return true;
+    }
+    else if(pegs[1] == pegs[4] && pegs[4] == pegs[7] && pegs[1] != " ")
+    {
+        return true;
+    }
+    else if(pegs[2] == pegs[5] && pegs[5] == pegs[8] && pegs[2] != " ")
+    {
+        return true;
+    }
+    return false;
+
+}
+bool TicTacToe::check_row_win()
+{
+    if(pegs[0] == pegs[1] && pegs[1] == pegs[2] && pegs[1] != " ")
+    {
+        return true;
+    }
+    else if(pegs[3] == pegs[4] && pegs[4] == pegs[5] && pegs[3] != " ")
+    {
+        return true;
+    }
+    else if(pegs[6] == pegs[7] && pegs[7] == pegs[8] && pegs[6] != " ")
+    {
+        return true;
+    }
+    return false;
+}
+bool TicTacToe::check_diagonal_win()
+{
+    if(pegs[0] == pegs[4] && pegs[4] == pegs[8] && pegs[0] != " ")
+    {
+        return true;
+    }
+    else if(pegs[6] == pegs[4] && pegs[4] == pegs[2] && pegs[6] != " ")
+    {
+        return true;
+    }
+    return false;
+
+}
+void TicTacToe::set_winner()
+{
+    if(player == "X")
+    {
+        winner = "O";
+    }
+    else{
+        winner = "X";
+    }
+}
 void TicTacToe::set_next_player()
 {
-    if(player == "X" || player == "x")
+    if(player == "X")
     {
         player = "O";
     }
@@ -45,7 +117,6 @@ void TicTacToe::set_next_player()
     {
         player = "X";
     }
-    cout<<"player == "<<player<<"\n";
 }
 bool TicTacToe::check_board_full()
 {
