@@ -32,22 +32,34 @@ string TicTacToe::get_player() const
 {
     return player;
 }
-void TicTacToe::display_board() const
-{
-    for(int i = 0; i < pegs.size(); i++)
-    {
-        if( i == 2 || i == 5 || i == 8){
-            cout <<pegs[i]<<"\n";
-       } else{
-            cout <<pegs[i]<<"|";
-        }
-    }
-    cout<<"\n";
-}
+
 string TicTacToe::get_winner()
 {
     return winner;
 }
+
+
+std::istream& operator >> (std::istream& in, TicTacToe& game)
+{
+    int choice;
+    cout<<"Enter a postion from 1 to 9: ";
+        in>>choice;
+        game.mark_board(choice);
+}
+
+std::ostream& operator << (std::ostream& out, const TicTacToe& game)
+{
+    for(int i = 0; i < game.pegs.size(); i++)
+    {
+        if( i == 2 || i == 5 || i == 8){
+            out <<game.pegs[i]<<"\n";
+       } else{
+            out<<game.pegs[i]<<"|";
+        }
+    }
+    out<<"\n";
+}
+
 
 //Private
 
