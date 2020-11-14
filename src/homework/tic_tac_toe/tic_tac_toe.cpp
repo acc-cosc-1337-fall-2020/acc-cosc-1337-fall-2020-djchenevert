@@ -49,65 +49,43 @@ std::istream& operator >> (std::istream& in, TicTacToe& game)
 
 std::ostream& operator << (std::ostream& out, const TicTacToe& game)
 {
-    for(int i = 0; i < game.pegs.size(); i++)
+    if (game.pegs.size() == 9)
     {
-        if( i == 2 || i == 5 || i == 8){
-            out <<game.pegs[i]<<"\n";
-       } else{
-            out<<game.pegs[i]<<"|";
+        for(int i = 0; i < game.pegs.size(); i++)
+        {
+            if( i == 2 || i == 5 || i == 8){
+                out <<game.pegs[i]<<"\n";
+            } else{
+                out<<game.pegs[i]<<"|";
+            }
+        }
+    }
+    else if(game.pegs.size() == 16)
+    {
+        for(int i = 0; i < game.pegs.size(); i++)
+        {
+            if( i == 3 || i == 7 || i == 11 || i == 15){
+                out <<game.pegs[i]<<"\n";
+            } else{
+                out<<game.pegs[i]<<"|";
+            }
         }
     }
     out<<"\n";
 }
-
-
 //Private
 
 bool TicTacToe::check_column_win()
 {
-    if(pegs[0] == pegs[3] && pegs[3] == pegs[6] && pegs[0] != " ")
-    {
-        return true;
-    }
-    else if(pegs[1] == pegs[4] && pegs[4] == pegs[7] && pegs[1] != " ")
-    {
-        return true;
-    }
-    else if(pegs[2] == pegs[5] && pegs[5] == pegs[8] && pegs[2] != " ")
-    {
-        return true;
-    }
     return false;
-
 }
 bool TicTacToe::check_row_win()
 {
-    if(pegs[0] == pegs[1] && pegs[1] == pegs[2] && pegs[1] != " ")
-    {
-        return true;
-    }
-    else if(pegs[3] == pegs[4] && pegs[4] == pegs[5] && pegs[3] != " ")
-    {
-        return true;
-    }
-    else if(pegs[6] == pegs[7] && pegs[7] == pegs[8] && pegs[6] != " ")
-    {
-        return true;
-    }
     return false;
 }
 bool TicTacToe::check_diagonal_win()
 {
-    if(pegs[0] == pegs[4] && pegs[4] == pegs[8] && pegs[0] != " ")
-    {
-        return true;
-    }
-    else if(pegs[6] == pegs[4] && pegs[4] == pegs[2] && pegs[6] != " ")
-    {
-        return true;
-    }
     return false;
-
 }
 void TicTacToe::set_winner()
 {
