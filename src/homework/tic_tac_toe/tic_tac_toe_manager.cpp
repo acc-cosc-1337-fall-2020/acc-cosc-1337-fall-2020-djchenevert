@@ -1,4 +1,3 @@
-//cpp
 #include "tic_tac_toe_manager.h"
 
 
@@ -41,6 +40,17 @@ void TicTacToeManager::update_winner_count(string winner)
     }
     else
     {
-    ties ++;
+        ties ++;
     }
 }
+
+TicTacToeManager::TicTacToeManager(TicTacToeData &data)
+{
+    games = data.get_games();
+    for(auto &game_ptr : games)
+    {
+        update_winner_count(game_ptr->get_winner());
+    }
+}
+
+TicTacToeManager::~TicTacToeManager() {data.save_games(games);}

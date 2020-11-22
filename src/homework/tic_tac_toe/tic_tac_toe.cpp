@@ -38,13 +38,22 @@ string TicTacToe::get_winner()
     return winner;
 }
 
-
 std::istream& operator >> (std::istream& in, TicTacToe& game)
 {
-    int choice;
-    cout<<"Enter a postion from 1 to 9: ";
+    if(game.pegs.size() == 9)
+    {
+        int choice;
+        cout<<"Enter a postion from 1 to 9: ";
         in>>choice;
         game.mark_board(choice);
+    }
+    else if(game.pegs.size())
+    {
+        int choice;
+        cout<<"Enter a position from 1 to 16: ";
+        in>>choice;
+        game.mark_board(choice);
+    }
 }
 
 std::ostream& operator << (std::ostream& out, const TicTacToe& game)
@@ -75,15 +84,15 @@ std::ostream& operator << (std::ostream& out, const TicTacToe& game)
 }
 //Private
 
-bool TicTacToe::check_column_win()
+bool TicTacToe::check_column_win()const
 {
     return false;
 }
-bool TicTacToe::check_row_win()
+bool TicTacToe::check_row_win()const
 {
     return false;
 }
-bool TicTacToe::check_diagonal_win()
+bool TicTacToe::check_diagonal_win()const
 {
     return false;
 }
@@ -108,7 +117,7 @@ void TicTacToe::set_next_player()
         player = "X";
     }
 }
-bool TicTacToe::check_board_full()
+bool TicTacToe::check_board_full() const
 {
     for(int i = 0; i < pegs.size(); i++)
     {

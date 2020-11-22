@@ -3,12 +3,13 @@
 #include"tic_tac_toe_3.h"
 #include"tic_tac_toe_4.h"
 
-using std::cout;	using std::cin;
+using std::cout;    using std::cin;
 
 int main() 
 {
-	std::unique_ptr<TicTacToe> game;
-	TicTacToeManager manager;
+	unique_ptr<TicTacToe> game;
+	TicTacToeData data;
+	TicTacToeManager manager(data);
 
 	string player_choice;
 	char option;
@@ -66,10 +67,6 @@ int main()
 		cout<<"Winner is player: "<<game->get_winner()<<"\n";
 		manager.save_game(game);
 		manager.get_winner_total(o, x, t);
-
-		cout<<"X wins: "<<x<<"\n";
-		cout<<"O wins: "<<o<<"\n";
-		cout<<"Ties: "<<t<<"\n\n";
 
 		cout<<"Shall we play a game? Y or N: ";
 		cin>>option;
